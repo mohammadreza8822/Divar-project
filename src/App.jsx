@@ -10,6 +10,7 @@ function App() {
   const queryClient = new QueryClient({
     defaultOptions,
   });
+
   return (
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
