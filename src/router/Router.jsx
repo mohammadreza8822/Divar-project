@@ -12,7 +12,7 @@ import { getProfile } from "../services/user";
 function Router() {
   const { data, isLoading, error } = useQuery(["profile"], getProfile);
 
-  if (isLoading) return <h1>Loading...</h1>;
+  // if (isLoading) return <h1>Loading...</h1>;
 
   return (
     <Routes>
