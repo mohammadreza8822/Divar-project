@@ -5,6 +5,8 @@ import { checkOtp } from "services/auth";
 import { setCookie } from "utils/cookie";
 import { getProfile } from "../../services/user";
 
+import styles from "./CheckOtpForm.module.css";
+
 function CheckOtpForm({ code, setStep, setCode, mobile }) {
   const navigate = useNavigate();
   const { refetch } = useQuery(["profile"], getProfile);
@@ -18,13 +20,13 @@ function CheckOtpForm({ code, setStep, setCode, mobile }) {
     if (response) {
       setCookie(response.data);
       navigate("/");
-      refetch( )
+      refetch();
     }
     if (error) alert(error.response.data.message);
   };
 
   return (
-    <form onSubmit={submitHandler}>
+    <form onSubmit={submitHandler} className={styles.form}>
       <p>تایید کد پیامک شده</p>
       <span>کد پیامک شده به شماره {mobile} را وارد نمایید.</span>
       <label htmlFor="input">کد تایید را وارد نمایید</label>
@@ -40,6 +42,7 @@ function CheckOtpForm({ code, setStep, setCode, mobile }) {
         onClick={() => {
           setStep(1);
         }}
+        className={styles.backButton}
       >
         تغییر شماره موبایل
       </button>
