@@ -12,6 +12,7 @@ import Loader from "../components/modules/Loader";
 
 function Router() {
   const { data, isLoading, error } = useQuery(["profile"], getProfile);
+  console.log({ data, isLoading, error });
 
   if (isLoading) return <Loader />;
 
@@ -29,7 +30,7 @@ function Router() {
       <Route
         path="/admin"
         element={
-          data && data.data.roll === "Admin" ? (
+          data && data.data.role === "ADMIN" ? (
             <AdminPage />
           ) : (
             <Navigate to="/" />
