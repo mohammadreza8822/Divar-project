@@ -1,10 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
-
-import { getCategory } from "../../services/admin";
+import toast from "react-hot-toast";
 import { useState } from "react";
 import axios from "axios";
 
-import getCookie from "../../utils/cookie.js";
+import { getCategory } from "../../services/admin";
+import { getCookie } from "../../utils/cookie.js";
 
 import styles from "./AddPost.module.css";
 
@@ -37,15 +37,16 @@ function AddPost() {
       formData.append(i, form[i]);
     }
     const token = getCookie("accessToken");
+
     axios
-      .post(`${import.meta.env.VITE_BASE_URL}post/create`, form, {
+      .post(`${import.meta.env.VITE_BASE_URL}post/create`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
           Authorization: `bearer ${token}`,
         },
       })
-      .then((res) => console.log(res))
-      .catch((error) => console.log(error));
+      .then((res) => toast.success(res.data.message))
+      .catch((error) => toast.error("مشکلی پیش آمده است"));
   };
 
   return (
