@@ -8,7 +8,7 @@ import styles from "./PostList.module.css";
 
 function PostList() {
   const { data, isLoading } = useQuery(["my-post-list"], getPosts);
-  console.log({ data });
+
   return (
     <div className={styles.list}>
       {isLoading ? (

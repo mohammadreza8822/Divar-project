@@ -38,3 +38,14 @@
   border-radius: 5px;
   margin-right: 40px;
 }
+
+.login button {
+  height: 40px;
+  padding: 0 10px;
+  background-color: #a62626;
+  color: #fff;
+  margin-left: 15px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+}
