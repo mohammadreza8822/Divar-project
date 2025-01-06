@@ -7,6 +7,7 @@ import { sp } from "../../utils/numbers.js";
 import styles from "./PostList.module.css";
 
 function PostList() {
+  const baseURL = import.meta.env.VITE_BASE_URL;
   const { data, isLoading } = useQuery(["my-post-list"], getPosts);
 
   return (
@@ -18,7 +19,7 @@ function PostList() {
           <h3>آگهی های شما</h3>
           {data.data.posts.map((post) => (
             <div key={post._id} className={styles.post}>
-              <img src={`${import.meta.env.VITE_BASE_URL}${post.images[0]}`} />
+              <img src={`${baseURL}${post.images[0]}`} />
               <div>
                 <p>{post.options.title}</p>
                 <span>{post.options.content}</span>
